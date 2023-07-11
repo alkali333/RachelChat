@@ -9,7 +9,8 @@ from decouple import config
 import openai
 
 # custom function imports
-from functions.openai_requests import convert_audio_to_text, get_chat_response
+from functions.openai_requests import convert_audio_to_text, get_chat_response, perform_reading
+from functions.tarot import draw_cards
 
 #initiate app
 app = FastAPI() 
@@ -52,6 +53,11 @@ async def get_audio():
     print(chat_response)
     return "done"
 
+@app.get("/tarot")
+async def do_reading():
+    drawn_cards = draw_cards()
+    print(perform_reading(drawn_cards))
+    return "done"
 
 
 # Post bot response
