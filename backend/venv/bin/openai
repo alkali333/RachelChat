@@ -1,4 +1,4 @@
-#!/home/jake/RachelChat/backend/venv/bin/python3
+#!/home/jake/development/RachelChat/backend/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

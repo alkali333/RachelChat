@@ -42,6 +42,25 @@ def get_recent_messages():
 
     return messages
 
+#reset messages
+def reset_messages():
+
+    #Overwrite current file with nothing
+    open("stored_data.json", "w")
+
 # get last messages
-def store_messages():
-    pass
+def store_messages(request_message, response_message):
+    # define the file name
+    file_name = "stored_data.json"
+
+    # ignore the first one becasue it is added anyway by get_recent_messages
+    messages = get_recent_messages()[1:]
+    user_message = {"role": "user", "content": request_message}
+    assistant_message = {"role": "assistant", "content": response_message}  
+    messages.append(user_message)
+    messages.append(assistant_message)
+
+    #save the updated file 3.28
+    with open(file_name, "w") as f:
+        json.dump(messages, f)
+
