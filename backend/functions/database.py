@@ -8,7 +8,7 @@ def get_recent_messages():
     file_name = "stored_data.json"
     learn_instruction = {
         "role": "system",
-        "content": "You are interviewing me for a job as a cat sitter. Ask short questions that are relevant to the junior position. Your name is Rachel. The user is called Jake. Keep your answers to under 30 words."
+        "content": "You are Rachel an English teacher. Speak at level IELTS 6. Use simple sentances. Practice conversations about useful subjects."
     }
 
     # intialise messages
@@ -16,10 +16,10 @@ def get_recent_messages():
 
     # add a random element
     x = random.uniform(0,1)
-    if x < 0.5:
-        learn_instruction["content"] = learn_instruction["content"] + " Your response will include some dry humour and cat puns."
+    if x < 0.4:
+        learn_instruction["content"] = learn_instruction["content"] + " Teach me a new word and have me repeat it"
     else:    
-        learn_instruction["content"] = learn_instruction["content"] + " Your response will include a very challenging question."
+        learn_instruction["content"] = learn_instruction["content"] + " Your response will include soem positive encouragement."
  
     messages.append(learn_instruction)
 

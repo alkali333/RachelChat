@@ -1,5 +1,8 @@
 import requests
 from decouple import config
+from gtts import gTTS
+from io import BytesIO
+
 
 ELEVEN_LABS_API_KEY = config("ELEVEN_LABS_API_KEY")
 
@@ -33,3 +36,16 @@ def convert_text_to_speech(message):
       return response.content
   else:
     return
+  
+
+def convert_text_to_speech_google(message: str):
+    try:
+        tts = gTTS(text=message, lang='en') # Use the English language
+        audio_io = BytesIO()
+        tts.save(audio_io)
+        audio_io.seek(0)  # Go back to the start of the BytesIO object
+        return audio_io.read()
+    except Exception as e:
+        print(f"Exception while converting text to speech using gTTS: {str(e)}")
+        return None
+
